@@ -33,7 +33,7 @@ export const App = () => {
   };
 
   return (
-    <div>
+    <div className="media-app">
       <h1>Hello, I&apos;m a React component!</h1>
       <div className="media-container">
         {data.media ? (

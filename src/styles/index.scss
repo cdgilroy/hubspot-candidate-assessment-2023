@@ -105,10 +105,14 @@ $quote-bubble-small: 10pt;
 }
 
 // EXERCISE 2
+.media-app {
+  max-width: $breakpoint-large;
+  margin: auto;
+}
 
 .media-container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200pt, 1fr));
 }
 
 .media-card {
@@ -122,15 +126,5 @@ $quote-bubble-small: 10pt;
 
   .genres {
     text-transform: capitalize;
-  }
-}
-
-@media screen and (min-width: $breakpoint-medium) {
-  .media-container {
-    grid-template-columns: minmax(100px, max-content);
-  }
-
-  .media-card {
-    max-width: 200pt;
   }
 }
