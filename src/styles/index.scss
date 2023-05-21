@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Roboto', 'Montserrat', sans-serif;
+  font-family: "Roboto", "Montserrat", sans-serif;
 }
 
 .exercise-header {
@@ -9,4 +9,97 @@ body {
   text-align: center;
   color: #fff;
   background-color: #00a4bd;
+}
+
+/*
+ * EXERCISE 1
+ */
+
+// Colour Palette
+$quote-orange: #fe6c02;
+$cta-blue: #00a2e0;
+
+// Dimensions
+$breakpoint-medium: 600pt;
+$breakpoint-large: 900pt;
+$quote-border: 2pt;
+$quote-bubble-large: 35pt;
+$quote-bubble-small: 10pt;
+
+.quote {
+  border-left: $quote-border solid $quote-orange;
+  width: 100%;
+  padding: 0 20pt;
+  box-sizing: border-box;
+  margin: 0 20pt;
+  width: calc(100% - 40pt);
+}
+
+.quote::before {
+  background-color: $quote-orange;
+  border-radius: 100%;
+  border: $quote-border solid white;
+  box-sizing: border-box;
+  color: #fff;
+  content: '"';
+  display: block;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 2rem;
+  height: $quote-bubble-large;
+  left: -($quote-bubble-large / 2 + 20pt + $quote-border / 2);
+  position: relative;
+  text-align: center;
+  width: $quote-bubble-large;
+}
+
+.quote::after {
+  background-color: $quote-orange;
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: $quote-bubble-small;
+  left: -($quote-bubble-small / 2 + 20pt + + $quote-border / 2);
+  position: relative;
+  width: $quote-bubble-small;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-body {
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-top: 0;
+}
+
+.quote-source {
+  font-weight: bold;
+}
+
+.button {
+  border-radius: 4pt;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  width: 250pt;
+  height: 50pt;
+  line-height: 50pt;
+  text-align: center;
+  margin: auto;
+}
+
+.button__cta {
+  background-color: $cta-blue;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .quote-container {
+    flex-direction: row;
+    margin: auto;
+    max-width: $breakpoint-large;
+  }
 }
