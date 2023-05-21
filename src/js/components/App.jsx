@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MediaCard } from "./MediaCard";
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -15,5 +16,32 @@ export const App = () => {
 
   console.log(data);
 
-  return <h1>Hello, I&apos;m a React component!</h1>;
+  const parseMedia = (media) => {
+    const mediaCards = [];
+    media.forEach((media) => {
+      mediaCards.push(
+        <MediaCard
+          title={media.title}
+          year={media.year}
+          poster={media.poster}
+          genre={media.genre}
+          type={media.type}
+        />
+      );
+    });
+    return mediaCards;
+  };
+
+  return (
+    <div>
+      <h1>Hello, I&apos;m a React component!</h1>
+      <div className="media-container">
+        {data.media ? (
+          parseMedia(data.media)
+        ) : (
+          <p>Unable to retrieve media 😔</p>
+        )}
+      </div>
+    </div>
+  );
 };

@@ -103,3 +103,34 @@ $quote-bubble-small: 10pt;
     max-width: $breakpoint-large;
   }
 }
+
+// EXERCISE 2
+
+.media-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.media-card {
+  box-sizing: border-box;
+  padding: 10pt;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+
+  .genres {
+    text-transform: capitalize;
+  }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .media-container {
+    grid-template-columns: minmax(100px, max-content);
+  }
+
+  .media-card {
+    max-width: 200pt;
+  }
+}
