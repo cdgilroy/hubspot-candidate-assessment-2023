@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MediaCard } from "./MediaCard";
+import { HeaderBar } from "./HeaderBar";
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -34,7 +35,7 @@ export const App = () => {
 
   return (
     <div className="media-app">
-      <h1>Hello, I&apos;m a React component!</h1>
+      <HeaderBar genres={["good", "bad"]} years={["1991", "1992"]} />
       <div className="media-container">
         {data.media ? (
           parseMedia(data.media)
