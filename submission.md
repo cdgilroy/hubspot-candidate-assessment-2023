@@ -9,17 +9,18 @@ These notes will be read by HubSpot developers. Drop us a line!
 - I don't think I got the import order plugin for ESLint working correctly at all, even with stripping out TypeScript.  That's a small annoyance, I like things being in a set order across a project.
 - I'd use [Redux](https://redux.js.org/) for state management, or maybe even [zustand](https://github.com/pmndrs/zustand) (I've not used it before, but a library I have worked with in the past made the switch so I'm curious).  A separate state management system is much more easily tested (and maintainable) than relying on React's built in state management and managing chains of props.
 - Add a "no results found" message if the filters result in no items being displayed - this is a separate case from no data being loaded from the endpoint.
-- Splitting into more components.  Each media item could be its own component, the grid for displaying the media items, and so on.  It's an organisational thing more than anything else, but it keeps `App.jsx` cleaner.
-- Testing using the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
-- I would add in accessibility testing. `eslint-plugin-jsx-a11y` is better than nothing, but something such as [`axe-core`](https://github.com/dequelabs/axe-core) integrated into the test suite would be much better.
+- Splitting into more components.  Each media item could be its own component, the grid for displaying the media items, and so on.  It's an organisational thing more than anything else as all the interaction happens in the `HeaderBar` component, but it keeps `App.jsx` cleaner.
+- Componment testing using the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+- Accessibility testing. `eslint-plugin-jsx-a11y` is better than nothing, but something such as [`axe-core`](https://github.com/dequelabs/axe-core) integrated into the test suite would be much better.
 - Spend more time on the CSS.  It's a skill, and one I'm far from mastering.
 - Use "CSS-in-JS" for styling.  It's a matter of personal preference, but I used [Emotion](https://emotion.sh/docs/introduction) extensively in a previous role and I quite like it.
 - Write my own multi-select dropdown component.  The one I selected is customisable and offers some nice functionality, but isn't obviously customisable enough to match the mockup as closely as I'd want.
 - Push for as many extra points as I can (e.g. fuzzy searching).
+- Add tooling the enforce [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## How did you deviate from the directions, if at all, and why?
 
-For Exercise 1 the instruction to not modify the DOM structure was very clear.  I did annotate it with classes so the structure is the same, but easier to reference for styling.  I'm not sure if that consitutes a deviation from the instructions, but I thought I'd raise that anyway.
+For Exercise 1 the instruction to not modify the DOM structure was very clear.  I did _annotate_ it with classes so the structure is the same, but easier to reference for styling.  I'm not sure if that consitutes a deviation from the instructions, but I thought I'd raise that anyway.
 
 ## Is there anything else you'd like to let us know?
 
