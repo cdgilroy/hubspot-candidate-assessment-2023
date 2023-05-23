@@ -42,11 +42,13 @@ export const App = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedYears, setSelectedYears] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [moviesOrBooks, setMoviesOrBooks] = useState(null);
 
   const clearFiltersHandler = () => {
     setSelectedGenres([]);
     setSelectedYears([]);
     setSearchQuery("");
+    setMoviesOrBooks(null);
   };
 
   useEffect(() => {
@@ -72,6 +74,8 @@ export const App = () => {
             setSelectedYears={setSelectedYears}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
+            moviesOrBooks={moviesOrBooks}
+            setMoviesOrBooks={setMoviesOrBooks}
             clearFiltersHandler={clearFiltersHandler}
           />
           <div className="media-container">
@@ -82,6 +86,15 @@ export const App = () => {
                 } else if (
                   item.title.toLowerCase().includes(searchQuery.toLowerCase())
                 ) {
+                  return item;
+                }
+              })
+              .filter((item) => {
+                if (!moviesOrBooks) {
+                  console.log("no movie or book filter set");
+                  return item;
+                } else if (item.type === moviesOrBooks) {
+                  console.log(`filter ${moviesOrBooks}`);
                   return item;
                 }
               })

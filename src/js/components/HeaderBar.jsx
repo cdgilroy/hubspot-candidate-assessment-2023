@@ -9,6 +9,8 @@ export const HeaderBar = ({
   setSelectedYears,
   searchQuery,
   setSearchQuery,
+  moviesOrBooks,
+  setMoviesOrBooks,
   clearFiltersHandler,
 }) => {
   return (
@@ -20,6 +22,7 @@ export const HeaderBar = ({
           value={selectedGenres}
           onChange={setSelectedGenres}
           labelledBy="Select Genres"
+          hasSelectAll={false}
         />
         <MultiSelect
           className="multi-select"
@@ -27,6 +30,7 @@ export const HeaderBar = ({
           value={selectedYears}
           onChange={setSelectedYears}
           labelledBy="Select Years"
+          hasSelectAll={false}
         />
         <input
           className="search-field"
@@ -37,9 +41,23 @@ export const HeaderBar = ({
         />
       </div>
       <div className="bottom-row">
-        <input id="radio-movies" type="radio" />
+        <input
+          id="radio-movies"
+          type="radio"
+          name="movies-or-books"
+          value="movie"
+          onChange={() => setMoviesOrBooks("movie")}
+          checked={moviesOrBooks === "movie"}
+        />
         <label htmlFor="radio-movies">Movies</label>
-        <input id="radio-books" type="radio" />
+        <input
+          id="radio-books"
+          type="radio"
+          name="movies-or-books"
+          value="book"
+          onChange={() => setMoviesOrBooks("book")}
+          checked={moviesOrBooks === "book"}
+        />
         <label htmlFor="radio-books">Books</label>
         <button className="clear-button" onClick={clearFiltersHandler}>
           Clear Filters
