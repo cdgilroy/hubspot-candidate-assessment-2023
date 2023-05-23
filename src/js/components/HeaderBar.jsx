@@ -13,6 +13,14 @@ export const HeaderBar = ({
   setMoviesOrBooks,
   clearFiltersHandler,
 }) => {
+  const genreValueRenderer = (selected) => {
+    return selected.length ? `${selected.length} Genres` : "Genres";
+  };
+
+  const yearValueRenderer = (selected) => {
+    return selected.length ? `${selected.length} Years` : "Years";
+  };
+
   return (
     <div className="header-bar">
       <div className="top-row">
@@ -23,6 +31,7 @@ export const HeaderBar = ({
           onChange={setSelectedGenres}
           labelledBy="Select Genres"
           hasSelectAll={false}
+          valueRenderer={genreValueRenderer}
         />
         <MultiSelect
           className="multi-select"
@@ -31,6 +40,7 @@ export const HeaderBar = ({
           onChange={setSelectedYears}
           labelledBy="Select Years"
           hasSelectAll={false}
+          valueRenderer={yearValueRenderer}
         />
         <input
           className="search-field"
