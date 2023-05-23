@@ -7,6 +7,7 @@ export const HeaderBar = ({
   setSelectedGenres,
   selectedYears,
   setSelectedYears,
+  clearFiltersHandler,
 }) => {
   return (
     <div>
@@ -30,7 +31,7 @@ export const HeaderBar = ({
         <label htmlFor="radio-movies">Movies</label>
         <input id="radio-books" type="radio" />
         <label htmlFor="radio-books">Books</label>
-        <button>Clear Filters</button>
+        <button onClick={clearFiltersHandler}>Clear Filters</button>
       </div>
     </div>
   );

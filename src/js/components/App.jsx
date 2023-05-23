@@ -21,6 +21,11 @@ export const App = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedYears, setSelectedYears] = useState([]);
 
+  const clearFiltersHandler = () => {
+    setSelectedGenres([]);
+    setSelectedYears([]);
+  };
+
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/HubSpotWebTeam/CodeExercise/main/src/js/data/data.json"
@@ -40,6 +45,7 @@ export const App = () => {
         setSelectedGenres={setSelectedGenres}
         selectedYears={selectedYears}
         setSelectedYears={setSelectedYears}
+        clearFiltersHandler={clearFiltersHandler}
       />
       {data.media ? (
         <div className="media-container">
