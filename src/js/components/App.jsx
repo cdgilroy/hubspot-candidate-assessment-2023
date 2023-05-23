@@ -14,7 +14,28 @@ const genres = [
   { label: "Action", value: "action" },
   { label: "Adventure", value: "adventure" },
 ];
+
+const parseGenres = (media) => {
+  const allGenres = [];
+  media.map((item) => {
+    return item.genre.map((genre) => {
+      allGenres.push(genre);
+    });
+  });
+
+  const uniqueGenres = Array.from(new Set(allGenres));
+
+  return uniqueGenres.map((item) => ({ label: item, value: item }));
+};
+
 const years = [{ label: "1981", value: "1981" }];
+const parseYears = (media) => {
+  const allYears = media.map((item) => item.year);
+
+  const uniqueYears = Array.from(new Set(allYears));
+
+  return uniqueYears.map((item) => ({ label: item, value: item }));
+};
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -38,27 +59,31 @@ export const App = () => {
 
   return (
     <div className="media-app">
-      <HeaderBar
-        genres={genres}
-        years={years}
-        selectedGenres={selectedGenres}
-        setSelectedGenres={setSelectedGenres}
-        selectedYears={selectedYears}
-        setSelectedYears={setSelectedYears}
-        clearFiltersHandler={clearFiltersHandler}
-      />
       {data.media ? (
-        <div className="media-container">
-          {data.media.map((item, index) => (
-            <div key={index} className="media-card">
-              <img src={item.poster} alt={`Poster for ${item.title}.`} />
-              <div>
-                {item.title} ({item.year})
+        <>
+          <HeaderBar
+            genres={parseGenres(data.media) || genres}
+            years={parseYears(data.media) || years}
+            selectedGenres={selectedGenres}
+            setSelectedGenres={setSelectedGenres}
+            selectedYears={selectedYears}
+            setSelectedYears={setSelectedYears}
+            clearFiltersHandler={clearFiltersHandler}
+          />
+          <div className="media-container">
+            {data.media.map((item, index) => (
+              <div key={index} className="media-card">
+                <img src={item.poster} alt={`Poster for ${item.title}.`} />
+                <div>
+                  {item.title} ({item.year})
+                </div>
+                <div className="genres">
+                  Genres: {prettifyGenres(item.genre)}
+                </div>
               </div>
-              <div className="genres">Genres: {prettifyGenres(item.genre)}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       ) : (
         <p>Unable to retrieve media 😔</p>
       )}
