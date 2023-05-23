@@ -90,6 +90,30 @@ export const App = () => {
                 }
               })
               .filter((item) => {
+                const selected = Array.from(
+                  selectedGenres,
+                  (item) => item.value
+                );
+                if (selected.length === 0) {
+                  return item;
+                } else if (
+                  item.genre.some((genre) => selected.includes(genre))
+                ) {
+                  return item;
+                }
+              })
+              .filter((item) => {
+                const selected = Array.from(
+                  selectedYears,
+                  (item) => item.value
+                );
+                if (selected.length === 0) {
+                  return item;
+                } else if (selected.includes(item.year)) {
+                  return item;
+                }
+              })
+              .filter((item) => {
                 if (!moviesOrBooks) {
                   console.log("no movie or book filter set");
                   return item;
