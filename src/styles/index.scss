@@ -107,7 +107,7 @@ $quote-bubble-small: 10pt;
 // EXERCISE 2
 .media-app {
   max-width: $breakpoint-large;
-  margin: auto;
+  margin: 0 20pt;
 }
 
 .media-container {
@@ -129,26 +129,44 @@ $quote-bubble-small: 10pt;
   }
 }
 
-.top-row {
+.header-bar {
   display: flex;
-  margin-bottom: 20pt;
-  width: 100%;
-}
-
-.search-field {
-  margin-left: auto;
-  font-family: "Roboto", "Montserrat", sans-serif;
-}
-
-.bottom-row {
-  display: flex;
-  width: 100%;
+  flex-direction: column;
 }
 
 .multi-select {
-  width: 150pt;
+  margin: 10pt 0;
+}
+
+.search-field {
+  box-sizing: border-box;
+  font-family: "Roboto", "Montserrat", sans-serif;
+  margin-left: auto;
+  width: 100%;
 }
 
 .clear-button {
   margin-left: auto;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .top-row {
+    display: flex;
+    margin-bottom: 20pt;
+    width: 100%;
+  }
+
+  .search-field {
+    width: 200pt;
+  }
+
+  .bottom-row {
+    display: flex;
+    width: 100%;
+  }
+
+  .multi-select {
+    padding: 0 10pt;
+    width: 200pt;
+  }
 }

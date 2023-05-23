@@ -53,17 +53,17 @@ export const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.media);
       });
   }, []);
 
   return (
     <div className="media-app">
-      {data.media ? (
+      {data ? (
         <>
           <HeaderBar
-            genres={parseGenres(data.media) || genres}
-            years={parseYears(data.media) || years}
+            genres={parseGenres(data) || genres}
+            years={parseYears(data) || years}
             selectedGenres={selectedGenres}
             setSelectedGenres={setSelectedGenres}
             selectedYears={selectedYears}
@@ -71,7 +71,7 @@ export const App = () => {
             clearFiltersHandler={clearFiltersHandler}
           />
           <div className="media-container">
-            {data.media.map((item, index) => (
+            {data.map((item, index) => (
               <div key={index} className="media-card">
                 <img src={item.poster} alt={`Poster for ${item.title}.`} />
                 <div>

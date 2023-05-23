@@ -10,7 +10,7 @@ export const HeaderBar = ({
   clearFiltersHandler,
 }) => {
   return (
-    <div>
+    <div className="header-bar">
       <div className="top-row">
         <MultiSelect
           className="multi-select"
