@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { MediaCard } from "./MediaCard";
 import { HeaderBar } from "./HeaderBar";
+import { MediaCard } from "./MediaCard";
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -43,6 +43,7 @@ export const App = () => {
           <p>Unable to retrieve media 😔</p>
         )}
       </div>
+      <input type="text" />
     </div>
   );
 };

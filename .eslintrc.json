@@ -20,9 +20,7 @@
   "plugins": ["react"],
   "rules": {},
   "settings": {
-    "import/resolver": {
-      "parcel": { "extensions": [".ts", ".tsx"], "rootDir": "src" }
-    },
+    "import/resolver": "parcel",
     "react": {
       "version": "detect"
     }
