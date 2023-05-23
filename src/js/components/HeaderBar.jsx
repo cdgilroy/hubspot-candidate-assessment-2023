@@ -1,30 +1,27 @@
-import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 
-export const HeaderBar = () => {
-  const [selectedGenres, setSelectedGenres] = useState([]);
-  const [selectedYears, setSelectedYears] = useState([]);
-
-  const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
-  ];
-
+export const HeaderBar = ({
+  genres,
+  years,
+  selectedGenres,
+  setSelectedGenres,
+  selectedYears,
+  setSelectedYears,
+}) => {
   return (
     <div>
       <div>
         <MultiSelect
-          options={options}
+          options={genres}
           value={selectedGenres}
           onChange={setSelectedGenres}
-          labelledBy="Select"
+          labelledBy="Select Genres"
         />
         <MultiSelect
-          options={options}
+          options={years}
           value={selectedYears}
           onChange={setSelectedYears}
-          labelledBy="Select"
+          labelledBy="Select Years"
         />
         <input type="text" />
       </div>

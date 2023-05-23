@@ -10,8 +10,16 @@ const prettifyGenres = (genres) => {
   return prettyGenres;
 };
 
+const genres = [
+  { label: "Action", value: "action" },
+  { label: "Adventure", value: "adventure" },
+];
+const years = [{ label: "1981", value: "1981" }];
+
 export const App = () => {
   const [data, setData] = useState({});
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [selectedYears, setSelectedYears] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -23,14 +31,19 @@ export const App = () => {
       });
   }, []);
 
-  console.log(data);
-
   return (
     <div className="media-app">
-      <HeaderBar />
-      <div className="media-container">
-        {data.media ? (
-          data.media.map((item, index) => (
+      <HeaderBar
+        genres={genres}
+        years={years}
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        selectedYears={selectedYears}
+        setSelectedYears={setSelectedYears}
+      />
+      {data.media ? (
+        <div className="media-container">
+          {data.media.map((item, index) => (
             <div key={index} className="media-card">
               <img src={item.poster} alt={`Poster for ${item.title}.`} />
               <div>
@@ -38,11 +51,11 @@ export const App = () => {
               </div>
               <div className="genres">Genres: {prettifyGenres(item.genre)}</div>
             </div>
-          ))
-        ) : (
-          <p>Unable to retrieve media 😔</p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p>Unable to retrieve media 😔</p>
+      )}
     </div>
   );
 };
