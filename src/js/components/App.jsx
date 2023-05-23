@@ -109,10 +109,8 @@ export const App = () => {
               })
               .filter((item) => {
                 if (!moviesOrBooks) {
-                  console.log("no movie or book filter set");
                   return item;
                 } else if (item.type === moviesOrBooks) {
-                  console.log(`filter ${moviesOrBooks}`);
                   return item;
                 }
               })
