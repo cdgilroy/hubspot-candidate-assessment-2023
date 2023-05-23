@@ -128,3 +128,27 @@ $quote-bubble-small: 10pt;
     text-transform: capitalize;
   }
 }
+
+.top-row {
+  display: flex;
+  margin-bottom: 20pt;
+  width: 100%;
+}
+
+.search-field {
+  margin-left: auto;
+  font-family: "Roboto", "Montserrat", sans-serif;
+}
+
+.bottom-row {
+  display: flex;
+  width: 100%;
+}
+
+.multi-select {
+  width: 150pt;
+}
+
+.clear-button {
+  margin-left: auto;
+}
