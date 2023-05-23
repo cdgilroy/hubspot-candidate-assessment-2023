@@ -1,29 +1,27 @@
-import { MultiSelect } from "react-multi-select-component";
 import { useState } from "react";
+import { MultiSelect } from "react-multi-select-component";
 
-export const HeaderBar = (genres, years) => {
-  const expandOptions = (options) => {
-    const newOptions = [];
-    options.forEach((option) =>
-      newOptions.push({ label: option, value: option })
-    );
-    return newOptions;
-  };
-
+export const HeaderBar = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedYears, setSelectedYears] = useState([]);
+
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  ];
 
   return (
     <div>
       <div>
         <MultiSelect
-          options={expandOptions(genres)}
+          options={options}
           value={selectedGenres}
           onChange={setSelectedGenres}
           labelledBy="Select"
         />
         <MultiSelect
-          options={expandOptions(years)}
+          options={options}
           value={selectedYears}
           onChange={setSelectedYears}
           labelledBy="Select"
@@ -33,7 +31,8 @@ export const HeaderBar = (genres, years) => {
       <div>
         <input id="radio-movies" type="radio" />
         <label htmlFor="radio-movies">Movies</label>
-        <input type="checkbox" />
+        <input id="radio-books" type="radio" />
+        <label htmlFor="radio-books">Books</label>
         <button>Clear Filters</button>
       </div>
     </div>

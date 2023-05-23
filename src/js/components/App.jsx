@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { HeaderBar } from "./HeaderBar";
-import { MediaCard } from "./MediaCard";
+
+const prettifyGenres = (genres) => {
+  let prettyGenres = "";
+  genres.forEach(
+    (genre, index) =>
+      (prettyGenres += `${genre}${index !== genres.length - 1 ? ", " : ""}`)
+  );
+  return prettyGenres;
+};
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -17,33 +25,24 @@ export const App = () => {
 
   console.log(data);
 
-  const parseMedia = (media) => {
-    const mediaCards = [];
-    media.forEach((media) => {
-      mediaCards.push(
-        <MediaCard
-          title={media.title}
-          year={media.year}
-          poster={media.poster}
-          genre={media.genre}
-          type={media.type}
-        />
-      );
-    });
-    return mediaCards;
-  };
-
   return (
     <div className="media-app">
-      <HeaderBar genres={["good", "bad"]} years={["1991", "1992"]} />
+      <HeaderBar />
       <div className="media-container">
         {data.media ? (
-          parseMedia(data.media)
+          data.media.map((item, index) => (
+            <div key={index} className="media-card">
+              <img src={item.poster} alt={`Poster for ${item.title}.`} />
+              <div>
+                {item.title} ({item.year})
+              </div>
+              <div className="genres">Genres: {prettifyGenres(item.genre)}</div>
+            </div>
+          ))
         ) : (
           <p>Unable to retrieve media 😔</p>
         )}
       </div>
-      <input type="text" />
     </div>
   );
 };
