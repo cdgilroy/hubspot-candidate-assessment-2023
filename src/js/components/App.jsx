@@ -75,19 +75,29 @@ export const App = () => {
             clearFiltersHandler={clearFiltersHandler}
           />
           <div className="media-container">
-            {data.map((item, index) => (
-              <div key={index} className="media-card">
-                <img
-                  className="poster"
-                  src={item.poster}
-                  alt={`Poster for ${item.title}.`}
-                />
-                <p className="title">
-                  {item.title} ({item.year})
-                </p>
-                <p className="genres">Genres: {prettifyGenres(item.genre)}</p>
-              </div>
-            ))}
+            {data
+              .filter((item) => {
+                if (searchQuery === "") {
+                  return item;
+                } else if (
+                  item.title.toLowerCase().includes(searchQuery.toLowerCase())
+                ) {
+                  return item;
+                }
+              })
+              .map((item, index) => (
+                <div key={index} className="media-card">
+                  <img
+                    className="poster"
+                    src={item.poster}
+                    alt={`Poster for ${item.title}.`}
+                  />
+                  <p className="title">
+                    {item.title} ({item.year})
+                  </p>
+                  <p className="genres">Genres: {prettifyGenres(item.genre)}</p>
+                </div>
+              ))}
           </div>
         </>
       ) : (
