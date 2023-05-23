@@ -59,7 +59,7 @@ export const App = () => {
 
   return (
     <div className="media-app">
-      {data ? (
+      {data.length > 0 ? (
         <>
           <HeaderBar
             genres={parseGenres(data) || genres}
