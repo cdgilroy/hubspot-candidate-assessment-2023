@@ -122,6 +122,15 @@ export const App = () => {
                   return item;
                 }
               })
+              .sort((a, b) => {
+                if (a.title.toUpperCase() < b.title.toUpperCase()) {
+                  return -1;
+                }
+                if (a.title.toUpperCase() > b.title.toUpperCase()) {
+                  return 1;
+                }
+                return 0;
+              })
               .map((item, index) => (
                 <div key={index} className="media-card">
                   <img
