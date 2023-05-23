@@ -117,6 +117,7 @@ $quote-bubble-small: 10pt;
 
 .media-card {
   box-sizing: border-box;
+  font-weight: bold;
   padding: 10pt;
   width: 100%;
 
@@ -125,6 +126,7 @@ $quote-bubble-small: 10pt;
   }
 
   .genres {
+    font-size: 0.8rem;
     text-transform: capitalize;
   }
 }

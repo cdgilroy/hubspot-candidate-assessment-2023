@@ -7,6 +7,8 @@ export const HeaderBar = ({
   setSelectedGenres,
   selectedYears,
   setSelectedYears,
+  searchQuery,
+  setSearchQuery,
   clearFiltersHandler,
 }) => {
   return (
@@ -26,7 +28,13 @@ export const HeaderBar = ({
           onChange={setSelectedYears}
           labelledBy="Select Years"
         />
-        <input className="search-field" type="text" placeholder="Search..." />
+        <input
+          className="search-field"
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
       <div className="bottom-row">
         <input id="radio-movies" type="radio" />

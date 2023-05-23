@@ -41,10 +41,12 @@ export const App = () => {
   const [data, setData] = useState({});
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedYears, setSelectedYears] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const clearFiltersHandler = () => {
     setSelectedGenres([]);
     setSelectedYears([]);
+    setSearchQuery("");
   };
 
   useEffect(() => {
@@ -68,18 +70,22 @@ export const App = () => {
             setSelectedGenres={setSelectedGenres}
             selectedYears={selectedYears}
             setSelectedYears={setSelectedYears}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
             clearFiltersHandler={clearFiltersHandler}
           />
           <div className="media-container">
             {data.map((item, index) => (
               <div key={index} className="media-card">
-                <img src={item.poster} alt={`Poster for ${item.title}.`} />
-                <div>
+                <img
+                  className="poster"
+                  src={item.poster}
+                  alt={`Poster for ${item.title}.`}
+                />
+                <p className="title">
                   {item.title} ({item.year})
-                </div>
-                <div className="genres">
-                  Genres: {prettifyGenres(item.genre)}
-                </div>
+                </p>
+                <p className="genres">Genres: {prettifyGenres(item.genre)}</p>
               </div>
             ))}
           </div>
