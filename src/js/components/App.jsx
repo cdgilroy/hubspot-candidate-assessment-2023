@@ -10,11 +10,6 @@ const prettifyGenres = (genres) => {
   return prettyGenres;
 };
 
-const genres = [
-  { label: "Action", value: "action" },
-  { label: "Adventure", value: "adventure" },
-];
-
 const parseGenres = (media) => {
   const allGenres = [];
   media.map((item) => {
@@ -25,16 +20,15 @@ const parseGenres = (media) => {
 
   const uniqueGenres = Array.from(new Set(allGenres));
 
-  return uniqueGenres.map((item) => ({ label: item, value: item }));
+  return uniqueGenres.sort().map((item) => ({ label: item, value: item }));
 };
 
-const years = [{ label: "1981", value: "1981" }];
 const parseYears = (media) => {
   const allYears = media.map((item) => item.year);
 
   const uniqueYears = Array.from(new Set(allYears));
 
-  return uniqueYears.map((item) => ({ label: item, value: item }));
+  return uniqueYears.sort().map((item) => ({ label: item, value: item }));
 };
 
 export const App = () => {
@@ -66,8 +60,8 @@ export const App = () => {
       {data.length > 0 ? (
         <>
           <HeaderBar
-            genres={parseGenres(data) || genres}
-            years={parseYears(data) || years}
+            genres={parseGenres(data)}
+            years={parseYears(data)}
             selectedGenres={selectedGenres}
             setSelectedGenres={setSelectedGenres}
             selectedYears={selectedYears}
